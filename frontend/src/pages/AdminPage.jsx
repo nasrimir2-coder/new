@@ -897,20 +897,21 @@ const PostsContent = () => {
     excerpt: '',
     content: '',
     tags: [],
-    published: false
+    published: false,
+    image: ''
   });
   const [tagInput, setTagInput] = useState('');
 
   const openAddModal = () => {
     setEditingItem(null);
-    setFormData({ title: '', excerpt: '', content: '', tags: [], published: false });
+    setFormData({ title: '', excerpt: '', content: '', tags: [], published: false, image: '' });
     setTagInput('');
     setIsModalOpen(true);
   };
 
   const openEditModal = (item) => {
     setEditingItem(item);
-    setFormData(item);
+    setFormData({ ...item, image: item.image || '' });
     setTagInput('');
     setIsModalOpen(true);
   };
