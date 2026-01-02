@@ -7,6 +7,7 @@ import { Toaster } from './components/ui/toaster';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import BlogPage from './pages/BlogPage';
+import BlogDetailPage from './pages/BlogDetailPage';
 import AdminPage from './pages/AdminPage';
 
 // Secret admin routes - only you know these URLs
@@ -23,6 +24,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path={SECRET_LOGIN_PATH} element={<LoginPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:id" element={<BlogDetailPage />} />
               <Route path={SECRET_ADMIN_PATH} element={<AdminPage />} />
             </Routes>
           </BrowserRouter>
