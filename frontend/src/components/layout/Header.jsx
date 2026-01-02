@@ -90,34 +90,6 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              {isAuthenticated ? (
-                <>
-                  <Link
-                    to="/admin"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-[rgb(218,218,218)] hover:text-[rgb(218,255,1)] transition-colors py-2"
-                  >
-                    Dashboard
-                  </Link>
-                  <button
-                    onClick={() => {
-                      logout();
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="text-red-400 text-left py-2"
-                  >
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <Link
-                  to="/login"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-[rgb(218,255,1)] font-semibold py-2"
-                >
-                  Admin Login
-                </Link>
-              )}
             </nav>
           </div>
         )}
