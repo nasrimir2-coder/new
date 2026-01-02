@@ -305,6 +305,46 @@ async def delete_post(post_id: str, user: dict = Depends(require_auth)):
         raise HTTPException(status_code=404, detail="Post not found")
     return {"success": True}
 
+# ==================== UPLOAD ROUTES ====================
+
+ALLOWED_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'}
+MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
+
+@api_router.post("/upload")
+async def upload_file(file: UploadFile = File(...), user: dict = Depends(require_auth)):
+    # Check file extension
+    file_ext = Path(file.filename).suffix.lower()
+    if file_ext not in ALLOWED_EXTENSIONS:
+        raise HTTPException(status_code=400, detail=f"File type not allowed. Allowed: {', '.join(ALLOWED_EXTENSIONS)}")
+    
+    # Generate unique filename
+    unique_filename = f"{uuid.uuid4()}{file_ext}"
+    file_path = UPLOAD_DIR / unique_filename
+    
+    # Read and check file size
+    content = await file.read()
+    if len(content) > MAX_FILE_SIZE:
+        raise HTTPException(status_code=400, detail="File size exceeds 5MB limit")
+    
+    # Save file
+    with open(file_path, "wb") as f:
+        f.write(content)
+    
+    # Return the URL path
+    return {
+        "success": True,
+        "filename": unique_filename,
+        "url": f"/uploads/{unique_filename}"
+    }
+
+@api_router.delete("/upload/{filename}")
+async def delete_file(filename: str, user: dict = Depends(require_auth)):
+    file_path = UPLOAD_DIR / filename
+    if file_path.exists():
+        file_path.unlink()
+        return {"success": True}
+    raise HTTPException(status_code=404, detail="File not found")
+
 # ==================== ROOT ROUTE ====================
 
 @api_router.get("/")
