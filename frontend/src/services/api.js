@@ -44,6 +44,29 @@ export const authAPI = {
   },
 };
 
+// Upload API
+export const uploadAPI = {
+  upload: async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const response = await api.post('/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+  delete: async (filename) => {
+    const response = await api.delete(`/upload/${filename}`);
+    return response.data;
+  },
+  getFullUrl: (path) => {
+    if (!path) return '';
+    if (path.startsWith('http')) return path;
+    return `${BACKEND_URL}${path}`;
+  },
+};
+
 // Profile API
 export const profileAPI = {
   get: async () => {
