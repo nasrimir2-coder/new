@@ -4,11 +4,19 @@ import { Button } from '../ui/button';
 import { useData } from '../../data/DataContext';
 
 const HeroSection = () => {
-  const { profile } = useData();
+  const { profile, loading } = useData();
   
   const scrollToExperience = () => {
     document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  if (loading || !profile) {
+    return (
+      <section className="min-h-screen flex items-center justify-center bg-[rgb(17,17,19)]">
+        <div className="text-[rgb(218,255,1)]">Loading...</div>
+      </section>
+    );
+  }
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[rgb(17,17,19)]">
