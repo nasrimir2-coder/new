@@ -1,9 +1,10 @@
 import React from 'react';
 import { Server, Activity, Clock, Zap } from 'lucide-react';
-import { validatorData } from '../../data/mock';
+import { useData } from '../../data/DataContext';
 
 const ValidatorSection = () => {
-  const activeCount = validatorData.filter(v => v.status === 'active').length;
+  const { validators } = useData();
+  const activeCount = validators.filter(v => v.status === 'active').length;
 
   return (
     <section id="validators" className="py-24 bg-[rgb(17,17,19)]">
