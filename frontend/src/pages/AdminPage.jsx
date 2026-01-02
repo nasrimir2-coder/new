@@ -18,9 +18,11 @@ import {
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
+import ImageUpload from '../components/ui/ImageUpload';
 import { useAuth } from '../contexts/AuthContext';
 import { useData } from '../data/DataContext';
 import { toast } from '../hooks/use-toast';
+import { uploadAPI } from '../services/api';
 import {
   Dialog,
   DialogContent,
