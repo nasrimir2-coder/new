@@ -41,17 +41,17 @@ const HeroSection = () => {
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Hi, I'm{' '}
-            <span className="text-[rgb(218,255,1)]">{profileData.name}</span>
+            <span className="text-[rgb(218,255,1)]">{profile.name}</span>
           </h1>
 
           {/* Tagline */}
           <p className="text-xl md:text-2xl text-[rgb(218,218,218)] mb-4">
-            {profileData.tagline}
+            {profile.tagline}
           </p>
 
           {/* Bio */}
           <p className="text-[rgb(161,161,170)] max-w-2xl mb-10 text-lg leading-relaxed">
-            {profileData.bio}
+            {profile.bio}
           </p>
 
           {/* CTA Buttons */}
