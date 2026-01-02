@@ -36,6 +36,35 @@ const ContactSection = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  if (!profile) return null;
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Mock submission - will be replaced with backend API
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    toast({
+      title: "Message Sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    });
+    
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(false);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <section id="contact" className="py-24 bg-[rgb(26,28,30)]">
       <div className="max-w-7xl mx-auto px-6">
