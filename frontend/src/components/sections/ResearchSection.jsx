@@ -1,9 +1,11 @@
 import React from 'react';
-import { FileText, ExternalLink, Calendar, Tag } from 'lucide-react';
+import { FileText, ExternalLink, Calendar } from 'lucide-react';
 import { Button } from '../ui/button';
-import { researchData } from '../../data/mock';
+import { useData } from '../../data/DataContext';
 
 const ResearchSection = () => {
+  const { research } = useData();
+  
   return (
     <section id="research" className="py-24 bg-[rgb(26,28,30)]">
       <div className="max-w-7xl mx-auto px-6">
