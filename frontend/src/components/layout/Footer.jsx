@@ -6,6 +6,8 @@ const Footer = () => {
   const { profile } = useData();
   const currentYear = new Date().getFullYear();
 
+  if (!profile) return null;
+
   const socialLinks = [
     { icon: Twitter, href: profile.socialLinks?.twitter, label: 'Twitter' },
     { icon: Github, href: profile.socialLinks?.github, label: 'GitHub' },
