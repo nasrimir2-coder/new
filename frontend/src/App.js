@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { DataProvider } from './data/DataContext';
 import { Toaster } from './components/ui/toaster';
-import CryptoCursor from './components/effects/CryptoCursor';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import BlogPage from './pages/BlogPage';
@@ -19,7 +18,6 @@ function App() {
     <AuthProvider>
       <DataProvider>
         <div className="App">
-          <CryptoCursor />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage />} />
