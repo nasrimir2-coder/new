@@ -6,7 +6,7 @@ default_profile = {
     "bio": "Passionate blockchain enthusiast with extensive experience in running node validators across multiple networks. Dedicated to decentralization and contributing to the Web3 ecosystem through research and infrastructure support.",
     "avatar": "https://api.dicebear.com/7.x/identicon/svg?seed=Fahmy&backgroundColor=111113",
     "location": "Indonesia",
-    "email": "fahmy@example.com",
+    "email": "fahmyfarda@gmail.com",
     "socialLinks": {
         "twitter": "https://twitter.com/fahmy",
         "github": "https://github.com/fahmy",

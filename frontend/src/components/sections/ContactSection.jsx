@@ -38,7 +38,7 @@ const ContactSection = () => {
         subject: formData.subject,
         message: formData.message,
         to_name: profile?.name || 'Fahmy',
-        to_email: profile?.email || 'fahmy@example.com',
+        to_email: 'fahmyfarda@gmail.com',
       };
 
       await emailjs.send(
