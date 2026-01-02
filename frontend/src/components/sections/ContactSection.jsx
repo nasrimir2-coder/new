@@ -67,7 +67,7 @@ const ContactSection = () => {
             {/* Contact Cards */}
             <div className="space-y-4">
               <a
-                href={`mailto:${profileData.email}`}
+                href={`mailto:${profile.email}`}
                 className="flex items-center gap-4 p-4 bg-[rgb(17,17,19)] border border-[rgb(63,63,63)] rounded-xl hover:border-[rgb(218,255,1)] transition-colors group"
               >
                 <div className="w-12 h-12 rounded-xl bg-[rgba(218,255,1,0.1)] flex items-center justify-center group-hover:bg-[rgb(218,255,1)] transition-colors">
@@ -75,7 +75,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-[rgb(161,161,170)] text-sm">Email</p>
-                  <p className="text-white">{profileData.email}</p>
+                  <p className="text-white">{profile.email}</p>
                 </div>
                 <ExternalLink className="w-4 h-4 text-[rgb(161,161,170)] ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
@@ -86,7 +86,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-[rgb(161,161,170)] text-sm">Discord</p>
-                  <p className="text-white">{profileData.socialLinks.discord}</p>
+                  <p className="text-white">{profile.socialLinks?.discord}</p>
                 </div>
               </div>
 
@@ -96,7 +96,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="text-[rgb(161,161,170)] text-sm">Location</p>
-                  <p className="text-white">{profileData.location}</p>
+                  <p className="text-white">{profile.location}</p>
                 </div>
               </div>
             </div>
