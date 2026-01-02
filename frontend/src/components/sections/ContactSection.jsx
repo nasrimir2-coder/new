@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import { Mail, Send, MapPin, MessageCircle, ExternalLink } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { useData } from '../../data/DataContext';
 import { toast } from '../../hooks/use-toast';
+
+// EmailJS Configuration - Replace with your actual keys from emailjs.com
+// 1. Go to https://www.emailjs.com/ and create a free account
+// 2. Add your email service (Gmail, Outlook, etc.)
+// 3. Create an email template
+// 4. Get your Service ID, Template ID, and Public Key
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
 
 const ContactSection = () => {
   const { profile } = useData();
@@ -20,16 +30,40 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Mock submission - will be replaced with backend API
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: profile?.name || 'Fahmy',
+        to_email: profile?.email || 'fahmy@example.com',
+      };
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      
+      toast({
+        title: "Message Sent! ✓",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      toast({
+        title: "Failed to send",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
