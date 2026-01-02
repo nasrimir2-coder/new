@@ -11,7 +11,7 @@ from typing import Dict, Any, Optional
 import uuid
 
 # Configuration
-BASE_URL = "https://crypto-profile-2.preview.emergentagent.com/api"
+BASE_URL = "https://node-validator.preview.emergentagent.com/api"
 ADMIN_EMAIL = "fahmy@admin.com"
 ADMIN_PASSWORD = "admin123"
 
