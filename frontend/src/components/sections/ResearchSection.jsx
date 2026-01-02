@@ -24,9 +24,9 @@ const ResearchSection = () => {
 
         {/* Research Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {researchData.map((research) => (
+          {research.map((item) => (
             <div
-              key={research.id}
+              key={item.id}
               className="bg-[rgb(17,17,19)] border border-[rgb(63,63,63)] rounded-2xl p-6 hover:border-[rgb(218,255,1)] transition-all duration-300 group flex flex-col"
             >
               {/* Icon */}
@@ -36,13 +36,13 @@ const ResearchSection = () => {
 
               {/* Title */}
               <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-[rgb(218,255,1)] transition-colors">
-                {research.title}
+                {item.title}
               </h3>
 
               {/* Date */}
               <div className="flex items-center gap-2 text-[rgb(161,161,170)] text-sm mb-4">
                 <Calendar className="w-4 h-4" />
-                {new Date(research.date).toLocaleDateString('en-US', {
+                {new Date(item.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric'
@@ -51,12 +51,12 @@ const ResearchSection = () => {
 
               {/* Abstract */}
               <p className="text-[rgb(218,218,218)] text-sm leading-relaxed mb-6 flex-grow">
-                {research.abstract}
+                {item.abstract}
               </p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-6">
-                {research.tags.map((tag) => (
+                {item.tags?.map((tag) => (
                   <span
                     key={tag}
                     className="px-3 py-1 rounded-full bg-[rgb(38,40,42)] text-[rgb(161,161,170)] text-xs"
