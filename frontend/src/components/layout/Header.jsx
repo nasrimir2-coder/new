@@ -48,9 +48,9 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="text-2xl font-bold text-white hover:text-[rgb(218,255,1)] transition-colors"
+            className="text-2xl font-bold text-[rgb(218,255,1)] hover:text-white transition-colors"
           >
-            Fahmy<span className="text-[rgb(218,255,1)]">.web3</span>
+            Fahmy<span className="text-white">.web3</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -60,16 +60,17 @@ const Header = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => handleNavClick(link.path)}
-                className="text-[rgb(218,218,218)] hover:text-[rgb(218,255,1)] transition-colors text-sm font-medium"
+                className="text-[rgb(218,255,1)] hover:text-white transition-colors text-sm font-medium relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[rgb(218,255,1)] transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-[rgb(218,255,1)] p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -85,7 +86,7 @@ const Header = () => {
                   key={link.name}
                   to={link.path}
                   onClick={() => handleNavClick(link.path)}
-                  className="text-[rgb(218,218,218)] hover:text-[rgb(218,255,1)] transition-colors py-2"
+                  className="text-[rgb(218,255,1)] hover:text-white transition-colors py-2"
                 >
                   {link.name}
                 </Link>
