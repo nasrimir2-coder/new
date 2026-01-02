@@ -330,11 +330,11 @@ async def upload_file(file: UploadFile = File(...), user: dict = Depends(require
     with open(file_path, "wb") as f:
         f.write(content)
     
-    # Return the URL path
+    # Return the URL path (using /api/uploads for proper ingress routing)
     return {
         "success": True,
         "filename": unique_filename,
-        "url": f"/uploads/{unique_filename}"
+        "url": f"/api/uploads/{unique_filename}"
     }
 
 @api_router.delete("/upload/{filename}")
