@@ -7,6 +7,9 @@ import { useAuth } from '../contexts/AuthContext';
 import { toast } from '../hooks/use-toast';
 import { Link } from 'react-router-dom';
 
+// Secret admin path
+const SECRET_ADMIN_PATH = '/fahmy-control-panel';
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +29,7 @@ const LoginPage = () => {
         title: "Welcome back!",
         description: "Successfully logged in to admin dashboard.",
       });
-      navigate('/admin');
+      navigate(SECRET_ADMIN_PATH);
     } else {
       toast({
         title: "Login Failed",
