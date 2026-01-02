@@ -1,15 +1,16 @@
 import React from 'react';
 import { Github, Twitter, Linkedin, Send, MessageCircle } from 'lucide-react';
-import { profileData } from '../../data/mock';
+import { useData } from '../../data/DataContext';
 
 const Footer = () => {
+  const { profile } = useData();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Twitter, href: profileData.socialLinks.twitter, label: 'Twitter' },
-    { icon: Github, href: profileData.socialLinks.github, label: 'GitHub' },
-    { icon: Linkedin, href: profileData.socialLinks.linkedin, label: 'LinkedIn' },
-    { icon: Send, href: profileData.socialLinks.telegram, label: 'Telegram' }
+    { icon: Twitter, href: profile.socialLinks?.twitter, label: 'Twitter' },
+    { icon: Github, href: profile.socialLinks?.github, label: 'GitHub' },
+    { icon: Linkedin, href: profile.socialLinks?.linkedin, label: 'LinkedIn' },
+    { icon: Send, href: profile.socialLinks?.telegram, label: 'Telegram' }
   ];
 
   return (
