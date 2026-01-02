@@ -25,7 +25,7 @@ const ValidatorSection = () => {
         {/* Stats Overview */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           {[
-            { label: 'Total Nodes', value: validatorData.length, icon: Server },
+            { label: 'Total Nodes', value: validators.length, icon: Server },
             { label: 'Active', value: activeCount, icon: Activity },
             { label: 'Avg Uptime', value: '99.96%', icon: Zap },
             { label: 'Since', value: '2022', icon: Clock }
@@ -43,7 +43,7 @@ const ValidatorSection = () => {
 
         {/* Validator Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {validatorData.map((validator) => (
+          {validators.map((validator) => (
             <div
               key={validator.id}
               className={`bg-[rgb(26,28,30)] border rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 ${
