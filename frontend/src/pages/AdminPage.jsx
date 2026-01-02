@@ -787,11 +787,18 @@ const ValidatorsContent = () => {
       </div>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-[rgb(26,28,30)] border-[rgb(63,63,63)] text-white max-w-lg">
+        <DialogContent className="bg-[rgb(26,28,30)] border-[rgb(63,63,63)] text-white max-w-lg max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingItem ? 'Edit Validator' : 'Add Validator'}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Network Logo/Image</label>
+              <ImageUpload
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+              />
+            </div>
             <div>
               <label className="block text-sm font-medium mb-2">Network Name *</label>
               <Input
@@ -856,7 +863,7 @@ const ValidatorsContent = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Icon</label>
+                <label className="block text-sm font-medium mb-2">Icon (emoji)</label>
                 <Input
                   value={formData.icon}
                   onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
