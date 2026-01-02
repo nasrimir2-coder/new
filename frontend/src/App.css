@@ -14,6 +14,18 @@ body {
   background: rgb(17, 17, 19);
 }
 
+/* Hide "Made with Emergent" button */
+[class*="emergent"],
+[id*="emergent"],
+div[style*="position: fixed"][style*="bottom"],
+a[href*="emergent"],
+button[class*="emergent"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
