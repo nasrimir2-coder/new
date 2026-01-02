@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,13 +25,35 @@ const Header = () => {
     { name: 'Contact', path: '/#contact' }
   ];
 
-  const handleNavClick = (path) => {
+  const handleNavClick = (e, path) => {
+    e.preventDefault();
     setIsMobileMenuOpen(false);
-    if (path.includes('#')) {
+    
+    if (path === '/blog') {
+      // Navigate to blog page
+      navigate('/blog');
+    } else if (path === '/') {
+      // Navigate to home
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (path.includes('#')) {
       const sectionId = path.split('#')[1];
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      
+      if (location.pathname !== '/') {
+        // If not on home page, navigate to home first then scroll
+        navigate('/');
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
@@ -48,6 +71,7 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
+            onClick={(e) => handleNavClick(e, '/')}
             className="text-2xl font-bold text-[rgb(218,255,1)] hover:text-white transition-colors"
           >
             Fahmy<span className="text-white">.web3</span>
@@ -56,15 +80,20 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                to={link.path}
-                onClick={() => handleNavClick(link.path)}
-                className="text-[rgb(218,255,1)] hover:text-white transition-colors text-sm font-medium relative group"
+                href={link.path}
+                onClick={(e) => handleNavClick(e, link.path)}
+                className={`text-sm font-medium relative group transition-colors ${
+                  (link.path === '/blog' && location.pathname === '/blog') ||
+                  (link.path === '/' && location.pathname === '/')
+                    ? 'text-[rgb(218,255,1)]'
+                    : 'text-[rgb(218,255,1)] hover:text-white'
+                }`}
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[rgb(218,255,1)] transition-all duration-300 group-hover:w-full" />
-              </Link>
+              </a>
             ))}
           </nav>
 
@@ -82,14 +111,14 @@ const Header = () => {
           <div className="md:hidden py-4 border-t border-[rgb(63,63,63)]">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
-                  to={link.path}
-                  onClick={() => handleNavClick(link.path)}
+                  href={link.path}
+                  onClick={(e) => handleNavClick(e, link.path)}
                   className="text-[rgb(218,255,1)] hover:text-white transition-colors py-2"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </nav>
           </div>
