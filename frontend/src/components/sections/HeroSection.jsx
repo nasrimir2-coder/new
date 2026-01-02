@@ -1,9 +1,11 @@
 import React from 'react';
 import { ArrowDown, Github, Twitter, Linkedin } from 'lucide-react';
 import { Button } from '../ui/button';
-import { profileData } from '../../data/mock';
+import { useData } from '../../data/DataContext';
 
 const HeroSection = () => {
+  const { profile } = useData();
+  
   const scrollToExperience = () => {
     document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' });
   };
