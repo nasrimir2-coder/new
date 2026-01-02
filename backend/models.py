@@ -61,6 +61,7 @@ class Research(BaseModel):
     date: str = ""
     tags: List[str] = []
     link: str = ""
+    image: str = ""  # Image URL
 
 class ResearchCreate(BaseModel):
     title: str
@@ -68,6 +69,7 @@ class ResearchCreate(BaseModel):
     date: str = ""
     tags: List[str] = []
     link: str = ""
+    image: str = ""
 
 class ResearchUpdate(BaseModel):
     title: Optional[str] = None
@@ -75,6 +77,7 @@ class ResearchUpdate(BaseModel):
     date: Optional[str] = None
     tags: Optional[List[str]] = None
     link: Optional[str] = None
+    image: Optional[str] = None
 
 # Validator Model
 class Validator(BaseModel):
@@ -87,6 +90,7 @@ class Validator(BaseModel):
     since: str = ""
     icon: str = "◆"
     color: str = "#627EEA"
+    image: str = ""  # Image URL
 
 class ValidatorCreate(BaseModel):
     network: str
@@ -97,6 +101,7 @@ class ValidatorCreate(BaseModel):
     since: str = ""
     icon: str = "◆"
     color: str = "#627EEA"
+    image: str = ""
 
 class ValidatorUpdate(BaseModel):
     network: Optional[str] = None
@@ -107,6 +112,7 @@ class ValidatorUpdate(BaseModel):
     since: Optional[str] = None
     icon: Optional[str] = None
     color: Optional[str] = None
+    image: Optional[str] = None
 
 # Post Model
 class Post(BaseModel):
@@ -117,6 +123,7 @@ class Post(BaseModel):
     date: str = Field(default_factory=lambda: datetime.now().strftime("%Y-%m-%d"))
     tags: List[str] = []
     published: bool = False
+    image: str = ""  # Featured image URL
 
 class PostCreate(BaseModel):
     title: str
@@ -124,6 +131,7 @@ class PostCreate(BaseModel):
     content: str = ""
     tags: List[str] = []
     published: bool = False
+    image: str = ""
 
 class PostUpdate(BaseModel):
     title: Optional[str] = None
@@ -131,6 +139,7 @@ class PostUpdate(BaseModel):
     content: Optional[str] = None
     tags: Optional[List[str]] = None
     published: Optional[bool] = None
+    image: Optional[str] = None
 
 # Auth Models
 class LoginRequest(BaseModel):
