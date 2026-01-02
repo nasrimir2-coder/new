@@ -50,8 +50,8 @@ security = HTTPBearer(auto_error=False)
 # Create the main app
 app = FastAPI(title="Fahmy Web3 Portfolio API")
 
-# Mount static files for uploads
-app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
+# Mount static files for uploads under /api/uploads to work with ingress routing
+app.mount("/api/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
