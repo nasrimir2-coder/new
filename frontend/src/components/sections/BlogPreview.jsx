@@ -39,7 +39,7 @@ const BlogPreview = () => {
         {/* Blog Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {latestPosts.map((post) => {
-            const imageUrl = post.image ? uploadAPI.getFullUrl(post.image) : null;
+            const imageUrl = post.image && post.image.trim() !== '' ? uploadAPI.getFullUrl(post.image) : null;
             
             return (
               <Link

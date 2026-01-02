@@ -27,7 +27,7 @@ const ResearchSection = () => {
         {/* Research Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {research.map((item) => {
-            const imageUrl = item.image ? uploadAPI.getFullUrl(item.image) : null;
+            const imageUrl = item.image && item.image.trim() !== '' ? uploadAPI.getFullUrl(item.image) : null;
             
             return (
               <Link

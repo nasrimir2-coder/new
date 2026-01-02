@@ -36,7 +36,7 @@ const ResearchDetailPage = () => {
     );
   }
 
-  const imageUrl = item.image ? uploadAPI.getFullUrl(item.image) : null;
+  const imageUrl = item.image && item.image.trim() !== '' ? uploadAPI.getFullUrl(item.image) : null;
 
   return (
     <div className="min-h-screen bg-[rgb(17,17,19)]">

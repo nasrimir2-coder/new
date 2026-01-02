@@ -45,7 +45,7 @@ const ValidatorSection = () => {
         {/* Validator Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {validators.map((validator) => {
-            const imageUrl = validator.image ? uploadAPI.getFullUrl(validator.image) : null;
+            const imageUrl = validator.image && validator.image.trim() !== '' ? uploadAPI.getFullUrl(validator.image) : null;
             
             return (
               <div

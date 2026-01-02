@@ -54,12 +54,13 @@ const BlogPage = () => {
           {/* Posts List */}
           <div className="space-y-6">
             {publishedPosts.map((post) => {
-              const imageUrl = post.image ? uploadAPI.getFullUrl(post.image) : null;
+              const imageUrl = post.image && post.image.trim() !== '' ? uploadAPI.getFullUrl(post.image) : null;
               
               return (
                 <Link
                   key={post.id}
                   to={`/blog/${post.id}`}
+                  data-testid={`blog-list-item-${post.id}`}
                   className="group block bg-[rgb(26,28,30)] border border-[rgb(63,63,63)] rounded-2xl overflow-hidden hover:border-[rgb(218,255,1)] transition-all duration-300"
                 >
                   <div className="flex flex-col md:flex-row">

@@ -35,7 +35,7 @@ const BlogDetailPage = () => {
     );
   }
 
-  const imageUrl = post.image ? uploadAPI.getFullUrl(post.image) : null;
+  const imageUrl = post.image && post.image.trim() !== '' ? uploadAPI.getFullUrl(post.image) : null;
 
   return (
     <div className="min-h-screen bg-[rgb(17,17,19)]">
