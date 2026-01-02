@@ -30,8 +30,11 @@ const Header = () => {
     setIsMobileMenuOpen(false);
     
     if (path === '/blog') {
-      // Navigate to blog page
+      // Navigate to blog page and scroll to top
       navigate('/blog');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
     } else if (path === '/') {
       // Navigate to home
       navigate('/');
