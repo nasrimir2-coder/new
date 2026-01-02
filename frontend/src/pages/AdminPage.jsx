@@ -587,11 +587,18 @@ const ResearchContent = () => {
       ))}
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-[rgb(26,28,30)] border-[rgb(63,63,63)] text-white max-w-lg">
+        <DialogContent className="bg-[rgb(26,28,30)] border-[rgb(63,63,63)] text-white max-w-lg max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingItem ? 'Edit Research' : 'Add Research'}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Image</label>
+              <ImageUpload
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+              />
+            </div>
             <div>
               <label className="block text-sm font-medium mb-2">Title *</label>
               <Input
