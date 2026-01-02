@@ -29,6 +29,9 @@ import {
   postsData as initialPosts
 } from '../data/mock';
 
+// Secret paths
+const SECRET_LOGIN_PATH = '/fahmy-secure-auth';
+
 const AdminPage = () => {
   const { isAuthenticated, logout, user, loading } = useAuth();
   const navigate = useNavigate();
@@ -45,7 +48,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     if (!loading && !isAuthenticated) {
-      navigate('/login');
+      navigate(SECRET_LOGIN_PATH);
     }
   }, [isAuthenticated, loading, navigate]);
 
