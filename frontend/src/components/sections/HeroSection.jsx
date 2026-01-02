@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowDown, Github, Twitter, Linkedin } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useData } from '../../data/DataContext';
+import BlockchainBackground from '../effects/BlockchainBackground';
 
 const HeroSection = () => {
   const { profile, loading } = useData();
@@ -20,19 +21,8 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-[rgb(17,17,19)]">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(218,255,1,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(218,255,1,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px'
-          }}
-        />
-      </div>
+      {/* Blockchain Animation Background */}
+      <BlockchainBackground />
 
       {/* Gradient Orbs */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[rgb(218,255,1)] rounded-full filter blur-[150px] opacity-10" />
@@ -41,7 +31,7 @@ const HeroSection = () => {
       <div className="max-w-7xl mx-auto px-6 py-32 relative z-10">
         <div className="flex flex-col items-center text-center">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(26,28,30)] border border-[rgb(63,63,63)] mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[rgb(26,28,30)]/80 backdrop-blur-sm border border-[rgb(63,63,63)] mb-8">
             <span className="w-2 h-2 rounded-full bg-[rgb(218,255,1)] animate-pulse" />
             <span className="text-[rgb(218,218,218)] text-sm">Available for collaboration</span>
           </div>
@@ -91,7 +81,7 @@ const HeroSection = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-[rgb(26,28,30)] border border-[rgb(63,63,63)] flex items-center justify-center text-[rgb(161,161,170)] hover:border-[rgb(218,255,1)] hover:text-[rgb(218,255,1)] transition-all duration-200"
+                className="w-12 h-12 rounded-xl bg-[rgb(26,28,30)]/80 backdrop-blur-sm border border-[rgb(63,63,63)] flex items-center justify-center text-[rgb(161,161,170)] hover:border-[rgb(218,255,1)] hover:text-[rgb(218,255,1)] transition-all duration-200"
               >
                 <social.icon className="w-5 h-5" />
               </a>
