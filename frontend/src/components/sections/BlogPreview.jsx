@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Tag } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 import { Button } from '../ui/button';
-import { postsData } from '../../data/mock';
+import { useData } from '../../data/DataContext';
 
 const BlogPreview = () => {
-  const latestPosts = postsData.filter(p => p.published).slice(0, 3);
+  const { posts } = useData();
+  const latestPosts = posts.filter(p => p.published).slice(0, 3);
 
   return (
     <section className="py-24 bg-[rgb(17,17,19)]">
