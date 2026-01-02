@@ -74,9 +74,9 @@ const HeroSection = () => {
           {/* Social Links */}
           <div className="flex gap-4">
             {[
-              { icon: Twitter, href: profileData.socialLinks.twitter },
-              { icon: Github, href: profileData.socialLinks.github },
-              { icon: Linkedin, href: profileData.socialLinks.linkedin }
+              { icon: Twitter, href: profile.socialLinks?.twitter },
+              { icon: Github, href: profile.socialLinks?.github },
+              { icon: Linkedin, href: profile.socialLinks?.linkedin }
             ].map((social, index) => (
               <a
                 key={index}
