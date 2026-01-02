@@ -1,8 +1,10 @@
 import React from 'react';
-import { Briefcase, Calendar, Tag } from 'lucide-react';
-import { experienceData } from '../../data/mock';
+import { Briefcase, Calendar } from 'lucide-react';
+import { useData } from '../../data/DataContext';
 
 const ExperienceSection = () => {
+  const { experiences } = useData();
+  
   return (
     <section id="experience" className="py-24 bg-[rgb(17,17,19)]">
       <div className="max-w-7xl mx-auto px-6">
@@ -26,7 +28,7 @@ const ExperienceSection = () => {
 
           {/* Experience Items */}
           <div className="space-y-12">
-            {experienceData.map((exp, index) => (
+            {experiences.map((exp, index) => (
               <div
                 key={exp.id}
                 className={`relative flex flex-col md:flex-row gap-8 ${
