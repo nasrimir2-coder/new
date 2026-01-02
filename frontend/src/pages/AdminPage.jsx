@@ -497,20 +497,21 @@ const ResearchContent = () => {
     abstract: '',
     date: '',
     tags: [],
-    link: ''
+    link: '',
+    image: ''
   });
   const [tagInput, setTagInput] = useState('');
 
   const openAddModal = () => {
     setEditingItem(null);
-    setFormData({ title: '', abstract: '', date: new Date().toISOString().split('T')[0], tags: [], link: '' });
+    setFormData({ title: '', abstract: '', date: new Date().toISOString().split('T')[0], tags: [], link: '', image: '' });
     setTagInput('');
     setIsModalOpen(true);
   };
 
   const openEditModal = (item) => {
     setEditingItem(item);
-    setFormData(item);
+    setFormData({ ...item, image: item.image || '' });
     setTagInput('');
     setIsModalOpen(true);
   };
