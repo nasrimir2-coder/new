@@ -67,37 +67,6 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Auth Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            {isAuthenticated ? (
-              <>
-                <Link to="/admin">
-                  <Button variant="ghost" size="sm" className="text-[rgb(218,218,218)] hover:text-[rgb(218,255,1)]">
-                    <User className="w-4 h-4 mr-2" />
-                    Dashboard
-                  </Button>
-                </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={logout}
-                  className="text-[rgb(218,218,218)] hover:text-red-400"
-                >
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <Link to="/login">
-                <Button
-                  className="bg-[rgb(218,255,1)] text-[rgb(17,17,19)] hover:bg-[rgb(166,190,21)] font-semibold px-6"
-                >
-                  Admin
-                </Button>
-              </Link>
-            )}
-          </div>
-
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white p-2"
