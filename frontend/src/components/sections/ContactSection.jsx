@@ -3,10 +3,11 @@ import { Mail, Send, MapPin, MessageCircle, ExternalLink } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
-import { profileData } from '../../data/mock';
+import { useData } from '../../data/DataContext';
 import { toast } from '../../hooks/use-toast';
 
 const ContactSection = () => {
+  const { profile } = useData();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
