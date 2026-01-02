@@ -1006,11 +1006,18 @@ const PostsContent = () => {
       ))}
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-[rgb(26,28,30)] border-[rgb(63,63,63)] text-white max-w-2xl">
+        <DialogContent className="bg-[rgb(26,28,30)] border-[rgb(63,63,63)] text-white max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingItem ? 'Edit Post' : 'New Post'}</DialogTitle>
           </DialogHeader>
-          <div className="space-y-4 py-4 max-h-[60vh] overflow-y-auto">
+          <div className="space-y-4 py-4">
+            <div>
+              <label className="block text-sm font-medium mb-2">Featured Image</label>
+              <ImageUpload
+                value={formData.image}
+                onChange={(url) => setFormData({ ...formData, image: url })}
+              />
+            </div>
             <div>
               <label className="block text-sm font-medium mb-2">Title *</label>
               <Input
