@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { authAPI } from '../services/api';
 
 const AuthContext = createContext(null);
 
@@ -16,25 +17,47 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check for existing session
-    const storedUser = localStorage.getItem('admin_user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-    setLoading(false);
+    const checkAuth = async () => {
+      const token = localStorage.getItem('auth_token');
+      const storedUser = localStorage.getItem('admin_user');
+      
+      if (token && storedUser) {
+        try {
+          // Verify token is still valid
+          await authAPI.getMe();
+          setUser(JSON.parse(storedUser));
+        } catch (error) {
+          // Token invalid, clear storage
+          localStorage.removeItem('auth_token');
+          localStorage.removeItem('admin_user');
+        }
+      }
+      setLoading(false);
+    };
+    
+    checkAuth();
   }, []);
 
   const login = async (email, password) => {
-    // Mock login - will be replaced with backend API
-    if (email === 'fahmy@admin.com' && password === 'admin123') {
-      const userData = { email, name: 'Fahmy', role: 'admin' };
-      localStorage.setItem('admin_user', JSON.stringify(userData));
-      setUser(userData);
-      return { success: true };
+    try {
+      const response = await authAPI.login(email, password);
+      
+      if (response.success) {
+        localStorage.setItem('auth_token', response.token);
+        localStorage.setItem('admin_user', JSON.stringify(response.user));
+        setUser(response.user);
+        return { success: true };
+      }
+      
+      return { success: false, error: response.error || 'Invalid credentials' };
+    } catch (error) {
+      console.error('Login error:', error);
+      return { success: false, error: 'Login failed. Please try again.' };
     }
-    return { success: false, error: 'Invalid credentials' };
   };
 
   const logout = () => {
+    localStorage.removeItem('auth_token');
     localStorage.removeItem('admin_user');
     setUser(null);
   };
