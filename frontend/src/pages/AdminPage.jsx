@@ -687,7 +687,8 @@ const ValidatorsContent = () => {
     uptime: '99.9%',
     since: '',
     icon: '◆',
-    color: '#627EEA'
+    color: '#627EEA',
+    image: ''
   });
 
   const openAddModal = () => {
@@ -700,14 +701,15 @@ const ValidatorsContent = () => {
       uptime: '99.9%',
       since: new Date().toISOString().slice(0, 7),
       icon: '◆',
-      color: '#627EEA'
+      color: '#627EEA',
+      image: ''
     });
     setIsModalOpen(true);
   };
 
   const openEditModal = (item) => {
     setEditingItem(item);
-    setFormData(item);
+    setFormData({ ...item, image: item.image || '' });
     setIsModalOpen(true);
   };
 
