@@ -64,18 +64,18 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href={`mailto:${profileData.email}`}
+                  href={`mailto:${profile.email}`}
                   className="text-[rgb(161,161,170)] hover:text-[rgb(218,255,1)] transition-colors"
                 >
-                  {profileData.email}
+                  {profile.email}
                 </a>
               </li>
               <li className="flex items-center gap-2 text-[rgb(161,161,170)]">
                 <MessageCircle className="w-4 h-4" />
-                {profileData.socialLinks.discord}
+                {profile.socialLinks?.discord}
               </li>
               <li className="text-[rgb(161,161,170)]">
-                {profileData.location}
+                {profile.location}
               </li>
             </ul>
           </div>
