@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, ArrowLeft, Tag } from 'lucide-react';
+import { Calendar, ArrowLeft } from 'lucide-react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { postsData } from '../data/mock';
+import { useData } from '../data/DataContext';
 
 const BlogPage = () => {
-  const publishedPosts = postsData.filter(p => p.published);
+  const { posts } = useData();
+  const publishedPosts = posts.filter(p => p.published);
 
   return (
     <div className="min-h-screen bg-[rgb(17,17,19)]">
