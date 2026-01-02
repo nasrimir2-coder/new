@@ -8,6 +8,10 @@ import LoginPage from './pages/LoginPage';
 import BlogPage from './pages/BlogPage';
 import AdminPage from './pages/AdminPage';
 
+// Secret admin routes - only you know these URLs
+const SECRET_LOGIN_PATH = '/fahmy-secure-auth';
+const SECRET_ADMIN_PATH = '/fahmy-control-panel';
+
 function App() {
   return (
     <AuthProvider>
@@ -15,9 +19,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path={SECRET_LOGIN_PATH} element={<LoginPage />} />
             <Route path="/blog" element={<BlogPage />} />
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path={SECRET_ADMIN_PATH} element={<AdminPage />} />
           </Routes>
         </BrowserRouter>
         <Toaster />
